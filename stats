@@ -1,0 +1,71 @@
+==originial p7z:
+	size:	2,124,093
+	dirs:	34125
+	files:	1724658
+
+==entpackt:
+	size:	26,124,760
+
+==löschung unnützer dateien:
+	size:	15,884,704
+	files:	1135661
+
+	**davon:
+		kaputt: 116
+		links: 454132
+
+==hinzufügen der links.list files TODO: dateigröße nach unten
+#create_linkindex.pl
+	size:	16,004,220
+	files:	1156229
+
+==löschen der links:
+#find de/ -size -2k -type f -name '*.html' -delete
+	size:	14,183,948
+	files:	701044
+
+==extrahieren des inhalts
+#extract_content.pl
+	size:	8575264
+
+==whitespaces und kommentare entfernen
+#clean_whitespaces_comments.pl
+	size:	8509992
+
+==editsection einträge entfernen
+#clean_edits.pl
+	size:	8197228
+
+==title attribute entfernen
+#clean_titles.pl
+	size:	7400248
+
+==tex images umwandeln
+#clean_tex.pl
+	size:	7395216
+
+==links umwandeln TODO: mit clean titles zusammenlegen
+#clean_links.pl
+	size:	6774260
+
+==thumbnail boxen löschen
+#clean_thumbnails.pl
+	size:	6515720
+
+==spans, class attr, style attr. löschen
+#clean_css_markup.pl
+	size:	5995296
+
+==bilder löschen
+#clean_images.pl
+	size:	5730456
+
+==alle umbenennen
+find de/ -type f | rename 's/^(.+?\/.{1,2}\/.{1,2}\/.{1,2}\/)(.+?[[:upper:]]+.*?)(_[a-f0-9]{4})\.html$/$1$2/' --
+
+find de/ -type f | rename 's/^(.+?\/.{1,2}\/.{1,2}\/.{1,2}\/)(.+?)\.html$/$1$2/' --
+
+
+in april: 664444 items, totalling 3.5 GB => 1GB
+	 701044	=> 1.1GB
+ 

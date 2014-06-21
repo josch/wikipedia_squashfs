@@ -1,0 +1,9 @@
+remove		11m
+extract		110m
+remove_files	22m
+create_links	-	
+delete_links	12m
+remove_everyth	118m
+remove_catlink	31m
+rename		11m
+mksquashfs	62m

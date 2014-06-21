@@ -1,0 +1,44 @@
+Be careful! What you do is only for testing and submitting bugs!
+Some important features may be correctly implemented!
+
+mail me: j [dot] schauer [at] email [dot] de
+
+All code is released unter GPLv3 or later
+
+
+1. install mksquashfs-tools
+on ubuntu you do this via
+sudo apt-get install squashfs-tools
+
+2. Obtain an wikipedia html dump from static.wikipedia.org
+be careful! the august 2007 version of the english wikipdia is 120GB extracted!!
+
+3. extract it to the folder where your scripts are located
+7zr x wikipedia-de-html.7z
+
+your directory structure for eg. german wikipedia dump (26GB extracted) should look like this:
+
+de/ <= all your extracted files
+README <= this file
+remove_files.sh <= bash script for removing unnecesarry files like talk pages
+create_linkindex.pl <= perl script for creating a links.list in eayh directory
+remove_everything.pl <= clean up all remainig junk in the dump files
+rename.pl <= rename everything
+
+4. edit all scripts for your language!
+
+heavy editing is to be done on remove_files.sh
+in the perl scripts you have to change this line according to your language folder:
+find(\&filehandler, "de");
+
+5. delete unnecessary files and dirs in your dump
+	rm -r de/COPYING.html de/index.html de/skins/ de/raw/ de/images/ de/upload/
+6. run remove_files.sh
+7. run create_linkindex.pl
+8. now delete all links with
+	find de/ -size -2k -type f -name '*.html' -delete
+9. run remove_everything.pl
+10. run rename.pl
+11. create the image file with
+	mksquashfs /de your_image_name
+12. test it and drop me a line if sth. went wrong!
